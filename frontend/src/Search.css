@@ -1,0 +1,184 @@
+/* General styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Search Container Styling */
+.search-container {
+    padding-top: 25vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    overflow-y: auto;
+    width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+/* Search Bar Styling */
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border: 2px solid #4c9f70;
+    border-radius: 25px;
+    background-color: #f4f7fb;
+    font-size: 16px;
+    color: #333;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Focused Search Bar */
+.search-bar:focus-within {
+    border-color: #3b7d58;
+    box-shadow: 0 0 8px rgba(59, 125, 88, 0.5);
+}
+
+/* Search Button Styling */
+.search-button {
+    padding: 12px 30px;
+    background-color: #598069;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    width: auto;
+    /* Ensure the button width adjusts properly */
+}
+
+/* Button Hover Effect */
+.search-button:hover {
+    background-color: #3b7d58;
+}
+
+/* Results List Styling */
+.results-list {
+    width: 100%;
+    max-width: 900px;
+    margin-top: 20px;
+    list-style-type: none;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    display: none;
+    text-align: center;
+}
+
+/* Show results when search is triggered */
+.results-list.show {
+    display: block;
+}
+
+/* Result Item Styling */
+.result-item {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    height: auto;
+    text-align: left;
+    background-color: rgb(255, 255, 255);
+}
+
+/* Hover Effect */
+.result-item:hover {
+    background-color: #f0f9f6;
+}
+
+/* Title of each result item */
+.result-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Summary Styling */
+.result-summary {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* Description Styling */
+.result-description {
+    display: none;
+    font-size: 14px;
+    color: #555;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.result-item.expanded .result-description {
+    display: block;
+    max-height: 500px;
+    padding: 10px;
+}
+
+/* No Results Styling */
+.no-results {
+    padding: 10px;
+    text-align: center;
+    color: #888;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 600px) {
+    .search-bar {
+        width: 90%;
+    }
+
+    .results-list {
+        width: 90%;
+    }
+
+    .search-button {
+        width: 90%;
+        margin-top: 15px;
+    }
+}
+
+/* For small screens, improve text and button readability */
+@media (max-width: 400px) {
+    .result-title {
+        font-size: 16px;
+    }
+
+    .result-summary {
+        font-size: 12px;
+    }
+
+    .result-description {
+        font-size: 12px;
+    }
+}

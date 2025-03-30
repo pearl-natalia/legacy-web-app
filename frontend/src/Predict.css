@@ -1,0 +1,121 @@
+/* Base styles for the app */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    /* Soft, light background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Main container */
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    /* Ensure children stretch to fill container's height */
+    flex-direction: row;
+    height: 600px;
+    /* Explicit height for the container */
+    width: 100vw;
+    gap: 100px;
+    padding: 50px 0;
+}
+
+#input-box,
+#output-box {
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    padding: 30px;
+    max-width: 500px;
+    /* Ensure the width doesn't stretch too wide */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    /* Ensure both boxes stretch to fill the container's height */
+}
+
+#output-box {
+    flex-grow: 1;
+    /* Let output box grow and fill the remaining space */
+}
+
+#consultation-title {
+    padding-bottom: 20px;
+}
+
+
+/* Textarea styles */
+.textarea {
+    width: 100%;
+    height: 200px;
+    border: 1px solid #ddd;
+    /* Light border for clarity */
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 16px;
+    /* Clear font size */
+    font-family: 'Arial', sans-serif;
+    resize: none;
+    background-color: #fafafa;
+    /* Soft background */
+    color: #333;
+    /* Dark text for readability */
+    transition: border 0.3s ease;
+    /* Smooth border change */
+}
+
+.textarea:focus {
+    border-color: #4c9f70;
+    /* Green focus for positive user feedback */
+    outline: none;
+    /* Remove outline for a cleaner look */
+}
+
+/* Button styles */
+.button {
+    margin-top: 24px;
+    background-color: #4c9f70;
+    /* Green for calm, health-related design */
+    color: white;
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #3b7d58;
+    /* Darker green on hover */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+    div {
+        width: 90%;
+        padding: 16px;
+    }
+
+    #container {
+        height: 200px;
+    }
+
+    .textarea {
+        height: 180px;
+        /* Slightly smaller textarea on mobile */
+    }
+
+    .button {
+        width: 100%;
+        /* Full-width button on mobile */
+    }
+}

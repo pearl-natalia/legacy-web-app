@@ -1,0 +1,15 @@
+backend/rag/.env
+backend/rag/__pycache__
+.DS_Store
+backend/semantic_search/.env
+backend/rag/__init__.py
+backend/predict/
+backend/rag/db.py
+backend/rag/label.py
+backend/rag/summarize.py
+backend/semantic_search/__pycache__
+backend/semantic_search/cohere_backup.py
+backend/mental_health_data.db
+backend/venv
+backend/env
+node_modules/
