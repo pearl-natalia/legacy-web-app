@@ -43,7 +43,7 @@ export default function App() {
         </button>
       </div>
       <div id="output-box">
-        <h1>{loading ? "Processing..." : output ? "" : "Listening..."}</h1>
+        <h2>{loading ? "Processing..." : output ? "" : "Advice will appear here"}</h2>
         <p>{output}</p>
       </div>
     </div>
