@@ -1,5 +1,6 @@
 backend/rag/.env
 backend/rag/__pycache__
+backend/__pycache__
 .DS_Store
 backend/semantic_search/.env
 backend/rag/__init__.py
@@ -13,3 +14,4 @@ backend/mental_health_data.db
 backend/venv
 backend/env
 node_modules/
+backend/old_app.py

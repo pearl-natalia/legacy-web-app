@@ -12,7 +12,7 @@ export default function Predict() {
         setOutput(""); // Clear previous output
 
         try {
-            const response = await axios.post("https://pearl-natalia--flask-app-api-dev.modal.run/predict_response", { text });
+            const response = await axios.post("https://pearl-natalia--flask-app-api.modal.run/predict_response", { text });
 
             if (response.status === 200 && response.data.advice) {
                 setOutput(response.data.advice);
