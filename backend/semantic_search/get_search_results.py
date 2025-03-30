@@ -51,7 +51,8 @@ def semantic_search_results(query_text, top_n=5):  # Default to top 5
     similarities = cosine_similarity(query_embedding, embeddings_np)[0]
 
     top_n_indices = similarities.argsort()[-top_n * 2:][::-1]  # Fetch more than top_n results to avoid duplicates
-    SIMILARITY_THRESHOLD = 0.3
+    SIMILARITY_THRESHOLD = 0.7
+    print(similarities)
     filtered_indices = [idx for idx in top_n_indices if similarities[idx] >= SIMILARITY_THRESHOLD]  # Apply threshold
 
 
