@@ -29,6 +29,7 @@ code {
   backdrop-filter: blur(5px);
   z-index: 1000;
   background-color: #598069;
+  height: 80px;
 }
 
 

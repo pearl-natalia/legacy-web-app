@@ -25,26 +25,28 @@ export default function App() {
   };
 
   return (
-    <div id="container">
-      <div id="input-box">
-        <h1>Get Consultation</h1>
-        <textarea
-          className="textarea"
-          placeholder="Type your consultation notes here..."
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-        <button
-          className="button"
-          onClick={handleSave}
-          disabled={loading || text.trim() === ""}
-        >
-          {loading ? "Loading..." : "Get Advice"}
-        </button>
-      </div>
-      <div id="output-box">
-        <h2>{loading ? "Processing..." : output ? "" : "Advice will appear here"}</h2>
-        <p>{output}</p>
+    <div id="body-container">
+      <div id="container">
+        <div id="input-box">
+          <h1>Get Consultation</h1>
+          <textarea
+            className="textarea"
+            placeholder="Type your consultation notes here..."
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
+          <button
+            className="button"
+            onClick={handleSave}
+            disabled={loading || text.trim() === ""}
+          >
+            {loading ? "Processing..." : "Get Advice"}
+          </button>
+        </div>
+        <div id="output-box">
+          <h1>{loading ? "Processing..." : output ? "" : "Advice will appear here"}</h1>
+          <p style={{ lineHeight: '1.6' }}>{output}</p>
+        </div>
       </div>
     </div>
   );

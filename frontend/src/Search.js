@@ -57,45 +57,47 @@ export const SearchBar = () => {
     };
 
     return (
-        <div className="search-container">
-            <input
-                id="search-bar"
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="Search for examples..."
-                className="search-bar"
-            />
-            <button onClick={handleSearch} className="search-button" disabled={loading}>
-                {loading ? "Loading..." : "Search"}
-            </button>
-            <div className={`results-list ${showResults ? 'show' : ''}`}>
-                {showResults && noResults && (
-                    <div className="no-results">No results found</div>
-                )}
-                {showResults && results.length > 0 && (
-                    results.map((result, index) => (
-                        <div
-                            key={index}
-                            className={`result-item ${expandedResults.includes(index) ? 'expanded' : ''}`}
-                            onClick={() => toggleExpand(index)}
-                        >
-                            <div className="result-summary"><b>{result.summary}</b></div>
+        <div id="body-container">
+            <div className="search-container">
+                <input
+                    id="search-bar"
+                    type="text"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    placeholder="Search for examples..."
+                    className="search-bar"
+                />
+                <button onClick={handleSearch} className="search-button" disabled={loading}>
+                    {loading ? "Loading..." : "Search"}
+                </button>
+                <div className={`results-list ${showResults ? 'show' : ''}`}>
+                    {showResults && noResults && (
+                        <div className="no-results">No results found</div>
+                    )}
+                    {showResults && results.length > 0 && (
+                        results.map((result, index) => (
+                            <div
+                                key={index}
+                                className={`result-item ${expandedResults.includes(index) ? 'expanded' : ''}`}
+                                onClick={() => toggleExpand(index)}
+                            >
+                                <div className="result-summary"><b>{result.summary}</b></div>
 
-                            {expandedResults.includes(index) && (
-                                <>
-                                    <div className="result-patient-dialogue">
-                                        <strong>Patient Dialogue:</strong> {result.patient_dialogue}
-                                    </div>
-                                    <div className="result-counselor-dialogue">
-                                        <strong>Counselor Dialogue:</strong> {result.counselor_dialogue}
-                                    </div>
-                                </>
-                            )}
-                        </div>
-                    ))
-                )}
+                                {expandedResults.includes(index) && (
+                                    <>
+                                        <div className="result-patient-dialogue">
+                                            <strong>Patient Dialogue:</strong> {result.patient_dialogue}
+                                        </div>
+                                        <div className="result-counselor-dialogue">
+                                            <strong>Counselor Dialogue:</strong> {result.counselor_dialogue}
+                                        </div>
+                                    </>
+                                )}
+                            </div>
+                        ))
+                    )}
+                </div>
             </div>
         </div>
     );

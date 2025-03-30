@@ -1,5 +1,5 @@
 /* Base styles for the app */
-body {
+#body-container {
     font-family: 'Arial', sans-serif;
     background-color: #f9f9f9;
     /* Soft, light background */
@@ -8,7 +8,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: calc(100vh - 80px);
+    margin-top: 80px;
 }
 
 /* Main container */
