@@ -33,7 +33,7 @@ def search():
     results = semantic_search_results(query_text)
     return jsonify({"results": results})
 
-@flask_app.route('/predict_anxiety', methods=['POST'])
+@flask_app.route('/predict_response', methods=['POST'])
 def get_prediction():
     from anxiety_model.model import predict_anxiety_level
     data = request.json
