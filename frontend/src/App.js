@@ -11,7 +11,7 @@ export default function App() {
     setLoading(true);
     setOutput("");
     try {
-      const response = await axios.post("http://localhost:5001/generate_advice", { text });
+      const response = await axios.post("https://pearl-natalia--flask-app-api-dev.modal.run/generate_advice", { text });
       if (response.status === 200 && response.data.advice) {
         setOutput(response.data.advice);
       } else {

@@ -23,7 +23,7 @@ export const SearchBar = () => {
 
         try {
             // Sending POST request using axios
-            const response = await axios.post("http://localhost:5001/search_results", { text: query });
+            const response = await axios.post("https://pearl-natalia--flask-app-api-dev.modal.run/search_results", { text: query });
 
             if (response.data.results.length === 0) {
                 setNoResults(true); // Show no results message if no results returned
