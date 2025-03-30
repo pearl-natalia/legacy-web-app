@@ -49,7 +49,7 @@ export default function Predict() {
                 </div>
                 <div id="output-box">
                     <h1>{loading ? "Predicting..." : output ? "" : "Click the button to predict..."}</h1>  {/* Show dynamic status */}
-                    <p>{loading || !output ? "" : output}</p>  {/* Only show output once loading is finished */}
+                    <h1>{loading || !output ? "" : output}</h1>  {/* Only show output once loading is finished */}
                 </div>
             </div>
         </div>
