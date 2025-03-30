@@ -8,8 +8,9 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 
 def predict_anxiety_level(new_text):
-    nltk_data_dir = os.getcwd()  # Current working directory
+    nltk_data_dir = os.path.join(os.getcwd(), 'anxiety_model')
     nltk.data.path.append(nltk_data_dir)
+    print(nltk_data_dir)
 
     if not os.path.exists(os.path.join(nltk_data_dir, 'tokenizers', 'punkt')):
         print("Downloading punkt...")
@@ -18,6 +19,10 @@ def predict_anxiety_level(new_text):
     if not os.path.exists(os.path.join(nltk_data_dir, 'corpora', 'stopwords')):
         print("Downloading stopwords...")
         nltk.download('stopwords', download_dir=nltk_data_dir)
+    
+    if not os.path.exists(os.path.join(nltk_data_dir, 'tokenizers', 'punkt_tab')):
+        print("Downloading punkt_tab...")
+        nltk.download('punkt_tab', download_dir=nltk_data_dir)
 
     def remove_url(text):
         re_url = re.compile(r'https?://\S+|www\.\S+')  # Fixed invalid escape sequence
@@ -42,17 +47,17 @@ def predict_anxiety_level(new_text):
     new_text_processed = [text.lower() for text in new_text_processed]
 
     # Load the trained TF-IDF vectorizer
-    with open('tfidf_vectorizer.pkl', 'rb') as tfidf_file:
+    with open(os.path.join(nltk_data_dir, 'tfidf_vectorizer.pkl'), 'rb') as tfidf_file:
         tfidf = pickle.load(tfidf_file)
     
     # Transform new text
     new_text_tfidf = tfidf.transform(new_text_processed).toarray()
 
     # Load models
-    with open('naive_bayes_model.pkl', 'rb') as model_file:
+    with open(os.path.join(nltk_data_dir, 'naive_bayes_model.pkl'), 'rb') as model_file:
         nb = pickle.load(model_file)
 
-    with open('random_forest_model.pkl', 'rb') as rf_file:
+    with open(os.path.join(nltk_data_dir, 'random_forest_model.pkl'), 'rb') as rf_file:
         rf = pickle.load(rf_file)
 
     # Predict probabilities
@@ -77,11 +82,11 @@ def predict_anxiety_level(new_text):
         return "Not Anxious"
     elif 0.3 <= normalized_probability < 0.6:
         return "Mildly Anxious"
-    elif 0.6 <= normalized_probability < 0.8:
+    elif 0.6 <= normalized_probability < 0.7:
         return "Moderately Anxious"
     else:
         return "Very Anxious"
 
-if __name__ == "__main__":
-    result = predict_anxiety_level("I'm super relaxed.")
-    print(f"Predicted Anxiety Level: {result}")
+# if __name__ == "__main__":
+#     predict_anxiety_level("Im so anxious")
+

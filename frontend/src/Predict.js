@@ -42,13 +42,13 @@ export default function Predict() {
                     <button
                         className="button"
                         onClick={handleSave}
-                        disabled={loading || text.trim() === ""}  // Disable button if no input
+                        disabled={loading || text.trim() === ""}  // Disable button if no input or loading
                     >
-                        Predict Resonse Type
+                        {loading ? "Predicting..." : "Predict Response Type"}  {/* Change button text based on loading state */}
                     </button>
                 </div>
                 <div id="output-box">
-                    <h1>{loading ? "Please give me a moment..." : output ? "" : "Click the button to predict..."}</h1>  {/* Show dynamic status */}
+                    <h1>{loading ? "Predicting..." : output ? "" : "Click the button to predict..."}</h1>  {/* Show dynamic status */}
                     <p>{loading || !output ? "" : output}</p>  {/* Only show output once loading is finished */}
                 </div>
             </div>

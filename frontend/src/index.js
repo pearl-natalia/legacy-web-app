@@ -29,7 +29,7 @@ const StartServerButton = () => {
         setTimeout(() => {
           setServerStatus('Server Running');
           setServerRunning(true);
-        }, 3000);
+        }, 5000);
 
       }
     } catch (error) {

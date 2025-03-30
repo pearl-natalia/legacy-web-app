@@ -11,7 +11,12 @@ image = modal.Image.debian_slim().pip_install_from_requirements("requirements.tx
     .add_local_file('rag/generate_advice.py', '/root/rag/generate_advice.py') \
     .add_local_file('rag/llm.py', '/root/rag/llm.py') \
     .add_local_file('rag/rag_model.py', '/root/rag/rag_model.py') \
-    .add_local_file('anxiety_model/model.py', '/root/anxiety_model/model.py')
+    .add_local_file('anxiety_model/model.py', '/root/anxiety_model/model.py') \
+    .add_local_file('anxiety_model/naive_bayes_model.pkl', '/root/anxiety_model/naive_bayes_model.pkl') \
+    .add_local_file('anxiety_model/random_forest_model.pkl', '/root/anxiety_model/random_forest_model.pkl') \
+    .add_local_file('anxiety_model/tfidf_vectorizer.pkl', '/root/anxiety_model/tfidf_vectorizer.pkl') \
+    .add_local_dir('anxiety_model/corpora', '/root/anxiety_model/corpora') \
+    .add_local_dir('anxiety_model/tokenizers', '/root/anxiety_model/tokenizers') \
 
 app = modal.App("flask-app", image=image)
 flask_app = Flask(__name__)
