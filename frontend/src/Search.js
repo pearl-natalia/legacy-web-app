@@ -24,10 +24,11 @@ export const SearchBar = () => {
         setLoading(true); // Start loading
 
         try {
-            const response = await axios.post("https://pearl-natalia--flask-app-api.modal.run/search_results", { text: query });
+            const response = await axios.post("https://pearl-natalia--flask-app-api-dev.modal.run/search_results", { text: query });
 
             if (response.data.results.length === 0) {
                 setNoResults(true); // Set to true if no results are found
+                setResults([]); // Ensure results are cleared
             } else {
                 setLoading(false);
                 setResults(response.data.results);
@@ -70,33 +71,30 @@ export const SearchBar = () => {
                 {loading ? "Loading..." : "Search"}
             </button>
             <div className={`results-list ${showResults ? 'show' : ''}`}>
-                {noResults ? (
+                {showResults && noResults && (
                     <div className="no-results">No results found</div>
-                ) : (
-                    results.length > 0 ? (
-                        results.map((result, index) => (
-                            <div
-                                key={index}
-                                className={`result-item ${expandedResults.includes(index) ? 'expanded' : ''}`}
-                                onClick={() => toggleExpand(index)}
-                            >
-                                <div className="result-summary"><b>{result.summary}</b></div>
+                )}
+                {showResults && results.length > 0 && (
+                    results.map((result, index) => (
+                        <div
+                            key={index}
+                            className={`result-item ${expandedResults.includes(index) ? 'expanded' : ''}`}
+                            onClick={() => toggleExpand(index)}
+                        >
+                            <div className="result-summary"><b>{result.summary}</b></div>
 
-                                {expandedResults.includes(index) && (
-                                    <>
-                                        <div className="result-patient-dialogue">
-                                            <strong>Patient Dialogue:</strong> {result.patient_dialogue}
-                                        </div>
-                                        <div className="result-counselor-dialogue">
-                                            <strong>Counselor Dialogue:</strong> {result.counselor_dialogue}
-                                        </div>
-                                    </>
-                                )}
-                            </div>
-                        ))
-                    ) : (
-                        <div className="no-results">No results found</div>
-                    )
+                            {expandedResults.includes(index) && (
+                                <>
+                                    <div className="result-patient-dialogue">
+                                        <strong>Patient Dialogue:</strong> {result.patient_dialogue}
+                                    </div>
+                                    <div className="result-counselor-dialogue">
+                                        <strong>Counselor Dialogue:</strong> {result.counselor_dialogue}
+                                    </div>
+                                </>
+                            )}
+                        </div>
+                    ))
                 )}
             </div>
         </div>

@@ -152,6 +152,7 @@ body {
     color: #888;
 }
 
+
 /* Responsive Design for Mobile */
 @media (max-width: 600px) {
     .search-bar {
