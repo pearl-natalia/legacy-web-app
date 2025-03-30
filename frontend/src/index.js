@@ -49,6 +49,7 @@ const StartServerButton = () => {
       style={{
         backgroundColor: serverRunning ? 'green' : '#960b16', // Color change based on server status
         color: 'white',
+        fontSize: '15px',
       }}
       disabled={isStarting} // Disable the button while starting the server
     >

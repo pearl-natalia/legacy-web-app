@@ -36,9 +36,9 @@ def search():
 def get_prediction():
     return jsonify({"message": "Prediction completed!"})
 
-@flask_app.route('/')
+@flask_app.route('/', methods=['POST'])
 def test():
-    return jsonify({"message": "Test!"})
+    return jsonify({"message": "Starting server"})
 
 @app.function(secrets=[modal.Secret.from_name("legacy")])
 @modal.wsgi_app()
