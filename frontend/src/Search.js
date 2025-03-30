@@ -15,19 +15,19 @@ export const SearchBar = () => {
         if (!query.trim()) {
             setShowResults(true);
             setResults([]);
-            setNoResults(true);
+            setNoResults(false); // No need to show "No results" when the query is empty
             return;
         }
 
         setShowResults(true);
-        setNoResults(false);
+        setNoResults(false); // Reset "No results" state before fetching new results
         setLoading(true); // Start loading
 
         try {
             const response = await axios.post("https://pearl-natalia--flask-app-api.modal.run/search_results", { text: query });
 
             if (response.data.results.length === 0) {
-                setNoResults(true);
+                setNoResults(true); // Set to true if no results are found
             } else {
                 setResults(response.data.results);
             }
