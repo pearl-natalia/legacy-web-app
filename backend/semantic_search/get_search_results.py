@@ -51,18 +51,22 @@ def semantic_search_results(query_text, top_n=5):  # Default to top 5
     similarities = cosine_similarity(query_embedding, embeddings_np)[0]
 
     top_n_indices = similarities.argsort()[-top_n * 2:][::-1]  # Fetch more than top_n results to avoid duplicates
+    SIMILARITY_THRESHOLD = 0.3
+    filtered_indices = [idx for idx in top_n_indices if similarities[idx] >= SIMILARITY_THRESHOLD]  # Apply threshold
+
 
     top_results = []
     seen_pairs = set()  # To track already seen patient-counselor pairs
     idx = 0  # Start at the first result
 
-    while len(top_results) < top_n and idx < len(top_n_indices):
-        entry_number = embeddings[top_n_indices[idx]][0]
+    while len(top_results) < top_n and idx < len(filtered_indices):
+        entry_number = embeddings[filtered_indices[idx]][0]
         conn = sqlite3.connect(DB_PATH)
         cursor = conn.cursor()
         cursor.execute("SELECT patient_dialogue, counselor_dialogue, summary FROM dialogues WHERE entry_number = ?", (entry_number,))
         patient_dialogue, counselor_dialogue, summary = cursor.fetchone()
         conn.close()
+        print(similarities)
 
         pair = (patient_dialogue, counselor_dialogue)
 

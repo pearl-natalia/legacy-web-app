@@ -7,31 +7,34 @@ export const SearchBar = () => {
     const [showResults, setShowResults] = useState(false);
     const [results, setResults] = useState([]);
     const [expandedResults, setExpandedResults] = useState([]);
-    const [noResults, setNoResults] = useState(false); // State to manage "No results found"
+    const [noResults, setNoResults] = useState(false);
+    const [loading, setLoading] = useState(false); // State to track loading
 
     // Handle search on button click
     const handleSearch = async () => {
         if (!query.trim()) {
             setShowResults(true);
-            setResults([]); // Clear previous results
-            setNoResults(true); // Show no results message
+            setResults([]);
+            setNoResults(true);
             return;
         }
 
-        setShowResults(true);  // Show results after search is triggered
-        setNoResults(false); // Hide no results message
+        setShowResults(true);
+        setNoResults(false);
+        setLoading(true); // Start loading
 
         try {
-            // Sending POST request using axios
             const response = await axios.post("https://pearl-natalia--flask-app-api-dev.modal.run/search_results", { text: query });
 
             if (response.data.results.length === 0) {
-                setNoResults(true); // Show no results message if no results returned
+                setNoResults(true);
             } else {
-                setResults(response.data.results); // Assuming the backend returns a list of results
+                setResults(response.data.results);
             }
         } catch (error) {
             console.error("Error fetching search results:", error);
+        } finally {
+            setLoading(false); // Stop loading
         }
     };
 
@@ -58,12 +61,12 @@ export const SearchBar = () => {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={handleKeyDown}  // Listen for Enter key press
+                onKeyDown={handleKeyDown}
                 placeholder="Search for examples..."
                 className="search-bar"
             />
-            <button onClick={handleSearch} className="search-button">
-                Search
+            <button onClick={handleSearch} className="search-button" disabled={loading}>
+                {loading ? "Loading..." : "Search"}
             </button>
             <div className={`results-list ${showResults ? 'show' : ''}`}>
                 {noResults ? (
@@ -76,10 +79,8 @@ export const SearchBar = () => {
                                 className={`result-item ${expandedResults.includes(index) ? 'expanded' : ''}`}
                                 onClick={() => toggleExpand(index)}
                             >
-                                {/* Display the summary by default */}
                                 <div className="result-summary"><b>{result.summary}</b></div>
 
-                                {/* Show both dialogues only if expanded */}
                                 {expandedResults.includes(index) && (
                                     <>
                                         <div className="result-patient-dialogue">
