@@ -29,6 +29,7 @@ export const SearchBar = () => {
             if (response.data.results.length === 0) {
                 setNoResults(true); // Set to true if no results are found
             } else {
+                setLoading(false);
                 setResults(response.data.results);
             }
         } catch (error) {
