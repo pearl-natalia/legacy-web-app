@@ -14,7 +14,7 @@ export default function Predict() {
         try {
             const response = await axios.post("https://pearl-natalia--flask-app-api.modal.run/predict_response", { text });
 
-            if (response.status === 200 && response.data.advice) {
+            if (response.status === 200 && response.data.anxiety_level) {
                 setOutput(response.data.anxiety_level);
             } else {
                 console.error("Unexpected response from server");
