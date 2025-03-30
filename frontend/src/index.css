@@ -50,7 +50,8 @@ code {
   padding: 20px;
 }
 
-.menu-button {
+.menu-button,
+#server-button {
   display: flex;
   /* Ensure button takes full width and height */
   justify-content: center;
@@ -65,12 +66,23 @@ code {
   transition: background-color 0.3s ease;
   width: 100px;
   /* Make button's width adjustable */
-  height: 40px;
+  height: 50px;
   /* Adjust height for uniformity */
 }
 
 .menu-button:hover {
   background-color: #367250;
+}
+
+#server-button {
+  opacity: 1;
+  /* Normal opacity */
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+  /* Smooth transition for opacity and background color */
+}
+
+#server-button:hover {
+  opacity: 0.9;
 }
 
 .menu-link {

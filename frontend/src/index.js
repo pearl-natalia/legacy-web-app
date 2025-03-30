@@ -1,4 +1,5 @@
-import React, { Suspense } from 'react';
+import React, { useState, Suspense } from 'react';
+import axios from "axios";
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
@@ -11,6 +12,51 @@ const Predict = React.lazy(() => import('./Predict'));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+const StartServerButton = () => {
+  const [isStarting, setIsStarting] = useState(false);
+  const [serverStatus, setServerStatus] = useState('Start Server');
+  const [serverRunning, setServerRunning] = useState(false);
+
+  const handleStartServer = async () => {
+    setIsStarting(true);
+    setServerStatus('Starting...');
+
+    try {
+      // Simulate server start by calling an API
+      const response = await axios.post("https://pearl-natalia--flask-app-api.modal.run/");
+
+      if (response.status === 200) {
+        setServerStatus('Server Running');
+        setServerRunning(true);
+      }
+    } catch (error) {
+      setServerStatus('Error'); // Display "Error" if failure
+
+      // Reset status after 2 seconds
+      setTimeout(() => {
+        setServerStatus('Start Server');
+      }, 2000); // Delay for 2 seconds
+    } finally {
+      setIsStarting(false); // Stop loading
+    }
+  };
+
+  return (
+    <button
+      className="menu-button"
+      id="server-button"
+      onClick={handleStartServer}
+      style={{
+        backgroundColor: serverRunning ? 'green' : '#960b16', // Color change based on server status
+        color: 'white',
+      }}
+      disabled={isStarting} // Disable the button while starting the server
+    >
+      {isStarting ? 'Starting...' : serverStatus}
+    </button>
+  );
+};
+
 root.render(
   <>
     <Router>
@@ -19,6 +65,9 @@ root.render(
           <img src="images/legacy-logo.webp" alt="Company Logo" className="logo" />
         </div>
         <div id="menu">
+          <Link className="menu-link" >
+            <StartServerButton />
+          </Link>
           <Link to="/" className="menu-link">
             <button className="menu-button">
               Advice
@@ -48,6 +97,6 @@ root.render(
           </CSSTransition>
         </TransitionGroup>
       </Suspense>
-    </Router>
+    </Router >
   </>
 );
