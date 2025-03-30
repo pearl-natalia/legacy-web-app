@@ -24,7 +24,7 @@ export const SearchBar = () => {
         setLoading(true); // Start loading
 
         try {
-            const response = await axios.post("https://pearl-natalia--flask-app-api-dev.modal.run/search_results", { text: query });
+            const response = await axios.post("https://pearl-natalia--flask-app-api.modal.run/search_results", { text: query });
 
             if (response.data.results.length === 0) {
                 setNoResults(true); // Set to true if no results are found
