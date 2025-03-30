@@ -99,24 +99,33 @@
     /* Darker green on hover */
 }
 
-/* Mobile responsiveness */
-@media (max-width: 480px) {
-    div {
-        width: 90%;
-        padding: 16px;
+@media (min-width: 509px) and (max-width: 1310px) {
+
+    #input-box,
+    #output-box {
+        max-width: 300ox;
+        height: 300px;
+    }
+}
+
+@media (max-width: 508px) {
+    #container {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
     }
 
-    #container {
+    #input-box,
+    #output-box {
+        width: 90%;
         height: 200px;
     }
 
     .textarea {
-        height: 180px;
-        /* Slightly smaller textarea on mobile */
+        height: 120px;
     }
 
     .button {
         width: 100%;
-        /* Full-width button on mobile */
     }
 }
