@@ -11,11 +11,11 @@ export const SearchBar = () => {
     const [loading, setLoading] = useState(false); // State to track loading
 
     // Handle search on button click
-    const handleSearch = async () => {
+    onst handleSearch = async () => {
         if (!query.trim()) {
-            setShowResults(true);
-            setResults([]);
-            setNoResults(false); // No need to show "No results" when the query is empty
+            // If query is empty, don't show any results or "No results found"
+            setShowResults(false);
+            setNoResults(false);
             return;
         }
 

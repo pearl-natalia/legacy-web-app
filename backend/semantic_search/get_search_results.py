@@ -51,7 +51,7 @@ def semantic_search_results(query_text, top_n=5):  # Default to top 5
     similarities = cosine_similarity(query_embedding, embeddings_np)[0]
 
     top_n_indices = similarities.argsort()[-top_n * 2:][::-1]  # Fetch more than top_n results to avoid duplicates
-    SIMILARITY_THRESHOLD = 0.7
+    SIMILARITY_THRESHOLD = 0.75
     filtered_indices = [idx for idx in top_n_indices if similarities[idx] >= SIMILARITY_THRESHOLD]  # Apply threshold
 
 
@@ -70,7 +70,7 @@ def semantic_search_results(query_text, top_n=5):  # Default to top 5
         pair = (patient_dialogue, counselor_dialogue)
 
         # Check if the pair has been seen before, if so, skip
-        if pair not in seen_pairs and patient_dialogue not None and patient_dialogue != "" and counselor_dialogue not None and counselor_dialogue != "":
+        if pair not in seen_pairs and patient_dialogue is not None and patient_dialogue != "" and counselor_dialogue is not None and counselor_dialogue != "":
             seen_pairs.add(pair)  # Add the current pair to the seen set
             top_results.append({
                 "summary": summary,  # Replace with actual summary or logic
