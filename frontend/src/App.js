@@ -28,7 +28,7 @@ export default function App() {
     <div id="body-container">
       <div id="container">
         <div id="input-box">
-          <h1>Get Consultation</h1>
+          <h1 className="text-2xl font-semibold text-gray-800" id="consultation-title">Get Consultation</h1>
           <textarea
             className="textarea"
             placeholder="Type your consultation notes here..."
