@@ -15,10 +15,10 @@ export default function App() {
       if (response.status === 200 && response.data.advice) {
         setOutput(response.data.advice);
       } else {
-        setOutput("Error retrieving advice.");
+        setOutput("Error retrieving advice. Is server running?");
       }
     } catch (error) {
-      setOutput("Error retrieving advice.");
+      setOutput("Error retrieving advice. Is server running?");
     } finally {
       setLoading(false);
     }

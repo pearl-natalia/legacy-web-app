@@ -10,7 +10,8 @@ image = modal.Image.debian_slim().pip_install_from_requirements("requirements.tx
     .add_local_file('semantic_search/get_search_results.py', '/root/semantic_search/get_search_results.py') \
     .add_local_file('rag/generate_advice.py', '/root/rag/generate_advice.py') \
     .add_local_file('rag/llm.py', '/root/rag/llm.py') \
-    .add_local_file('rag/rag_model.py', '/root/rag/rag_model.py')
+    .add_local_file('rag/rag_model.py', '/root/rag/rag_model.py') \
+    .add_local_file('anxiety_model/model.py', '/root/anxiety_model/model.py')
 
 app = modal.App("flask-app", image=image)
 flask_app = Flask(__name__)

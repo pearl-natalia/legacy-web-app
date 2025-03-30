@@ -12,17 +12,17 @@ export default function Predict() {
         setOutput(""); // Clear previous output
 
         try {
-            const response = await axios.post("https://pearl-natalia--flask-app-api.modal.run/predict_response", { text });
+            const response = await axios.post("https://pearl-natalia--flask-app-api.modal.run/predict_anxiety", { text });
 
             if (response.status === 200 && response.data.advice) {
-                setOutput(response.data.advice);
+                setOutput(response.data.anxiety_level);
             } else {
                 console.error("Unexpected response from server");
-                setOutput("Error retrieving advice.");
+                setOutput("Error predicting anxiety levels. Is server running?");
             }
         } catch (error) {
             console.error("Error generating advice", error);
-            setOutput("Error retrieving advice.");
+            setOutput("Error predicting anxiety levels. Is server running?");
         } finally {
             setLoading(false);  // Stop loading after response
         }

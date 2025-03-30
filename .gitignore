@@ -15,4 +15,4 @@ backend/venv
 backend/env
 node_modules/
 backend/old_app.py
-backend/model/
+backend/old_model/

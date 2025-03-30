@@ -25,12 +25,15 @@ const StartServerButton = () => {
       // Simulate server start by calling an API
       const response = await axios.post("https://pearl-natalia--flask-app-api.modal.run/");
 
-      if (response.status === 200) {
-        setServerStatus('Server Running');
-        setServerRunning(true);
+      if (response.status === 200 && response.data.message) {
+        setTimeout(() => {
+          setServerStatus('Server Running');
+          setServerRunning(true);
+        }, 3000);
+
       }
     } catch (error) {
-      setServerStatus('Error'); // Display "Error" if failure
+      setServerStatus('Error. Is server running?'); // Display "Error" if failure
 
       // Reset status after 2 seconds
       setTimeout(() => {
