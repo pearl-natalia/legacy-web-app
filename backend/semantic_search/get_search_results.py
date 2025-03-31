@@ -28,7 +28,8 @@ def semantic_search_results(query_text, top_n=5):  # Default to top 5
     prompt = f"""
                 Your goal is to take the user's search query and fix any spelling mistakes in it.
                 Only output the fixed query, as the output will directly be fed into a search engine. 
-                Only focus on fixing spelling mistakes, and changing wording only if it doens't make sense or if it's too long. Reword if needed to optimize for best search results, but don't lose it's meaning. 
+                Only focus on fixing spelling mistakes, and changing wording only if it doens't make sense or if it's too long. 
+                Summarize the input if needed to optimize for best search results, but don't lose it's meaning. 
                 DO NOT change the context. Here is the search query: {query_text}
             """
 
