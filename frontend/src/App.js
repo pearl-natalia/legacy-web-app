@@ -1,11 +1,26 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
 export default function App() {
   const [text, setText] = useState("");
   const [output, setOutput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isOverflowing, setIsOverflowing] = useState(false); // Track overflow state
+
+  const outputRef = useRef(null);  // Reference for the output box
+
+  // Scroll to the top if the output is overflowing
+  useEffect(() => {
+    if (outputRef.current) {
+      const isOverflowing = outputRef.current.scrollHeight > outputRef.current.clientHeight;
+      setIsOverflowing(isOverflowing); // Update the state to track overflow
+
+      if (isOverflowing) {
+        outputRef.current.scrollTop = 0; // Scroll to the top if overflowing
+      }
+    }
+  }, [output]); // Triggered when the output changes
 
   const handleSave = async () => {
     setLoading(true);
@@ -43,11 +58,15 @@ export default function App() {
             {loading ? "Processing..." : "Get Advice"}
           </button>
         </div>
-        <div id="output-box">
+        <div
+          id="output-box"
+          ref={outputRef}
+          className={isOverflowing ? "overflowing" : ""} // Add or remove the "overflowing" class
+        >
           <h1>{loading ? "Processing..." : output ? "" : "No Advice Yet"}</h1>
           <p style={{ lineHeight: '1.6' }}>{output}</p>
         </div>
       </div>
-    </div >
+    </div>
   );
 }

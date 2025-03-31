@@ -37,7 +37,6 @@ body {
   min-width: 400px;
   max-width: 500px;
   width: 100%;
-  padding: 20px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -48,6 +47,16 @@ body {
   height: auto;
   flex-grow: 1;
   box-sizing: border-box;
+  padding: 20px;
+}
+
+#output-box {
+  overflow-y: auto;
+}
+
+#output-box.overflowing {
+  justify-content: flex-start;
+  padding-top: 0px;
 }
 
 .title {
