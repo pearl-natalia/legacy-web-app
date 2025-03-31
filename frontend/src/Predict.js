@@ -1,6 +1,6 @@
+import "./Predict.css";
 import { useState } from "react";
 import axios from "axios";
-import "./Predict.css";
 
 export default function Predict() {
     const [text, setText] = useState("");

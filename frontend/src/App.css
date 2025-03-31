@@ -11,11 +11,11 @@
 }
 
 #container {
-  display: flex;
+  display: flex !important;
   flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
-  width: 90vw;
+  min-width: 100vw;
   max-width: 1200px;
   gap: 20px;
   padding: 20px;

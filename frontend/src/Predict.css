@@ -14,14 +14,14 @@
 
 /* Main container */
 #container {
-    display: flex;
+    display: flex !important;
     justify-content: center;
     align-items: stretch;
     /* Ensure children stretch to fill container's height */
     flex-direction: row;
     height: 600px;
     /* Explicit height for the container */
-    width: 100vw;
+    min-width: 100vw;
     gap: 100px;
     padding: 50px 0;
 }
