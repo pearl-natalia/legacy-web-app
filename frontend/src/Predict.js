@@ -48,7 +48,7 @@ export default function Predict() {
                     </button>
                 </div>
                 <div id="output-box">
-                    <h1 style="text-align: center;">
+                    <h1 style={{ textAlign: 'center' }}>
                         {loading ? "Predicting..." : (output ? output : "Click the button to predict...")}
                     </h1>
                 </div>
