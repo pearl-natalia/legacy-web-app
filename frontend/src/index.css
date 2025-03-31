@@ -80,6 +80,7 @@ code {
   /* Normal opacity */
   transition: opacity 0.3s ease, background-color 0.3s ease;
   /* Smooth transition for opacity and background color */
+  font-size: 15px;
 }
 
 #server-button:hover {
@@ -118,4 +119,21 @@ a {
 .fade-exit-active {
   opacity: 0;
   transition: opacity 300ms;
+}
+
+@media (max-width: 500px) {
+  .logo {
+    width: 90px;
+    height: auto;
+    filter: invert();
+    opacity: 0.5;
+    /* Increased visibility */
+  }
+
+  .menu-button,
+  #server-button {
+    width: 60px;
+    height: 30px;
+    font-size: 11px;
+  }
 }
