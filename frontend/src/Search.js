@@ -1,6 +1,6 @@
+import './Search.css';
 import React, { useState } from 'react';
 import axios from 'axios'; // Import axios
-import './Search.css';
 
 export const SearchBar = () => {
     const [query, setQuery] = useState('');

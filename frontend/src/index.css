@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden
 }
 
 code {
@@ -30,6 +33,7 @@ code {
   z-index: 1000;
   background-color: #598069;
   height: 80px;
+  box-sizing: border-box;
 }
 
 
@@ -49,6 +53,8 @@ code {
   display: flex;
   gap: 10px;
   padding: 20px;
+  box-sizing: border-box;
+  margin-right: 0;
 }
 
 .menu-button,
@@ -68,6 +74,8 @@ code {
   width: 100px;
   /* Make button's width adjustable */
   height: 50px;
+  overflow-y: hidden;
+  overflow-x: hidden;
   /* Adjust height for uniformity */
 }
 
@@ -132,8 +140,12 @@ a {
 
   .menu-button,
   #server-button {
-    width: 60px;
+    width: 50px;
     height: 30px;
     font-size: 11px;
+  }
+
+  #menu {
+    padding: 10px;
   }
 }

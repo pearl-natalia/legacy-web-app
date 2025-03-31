@@ -28,10 +28,10 @@ export default function App() {
     <div id="body-container">
       <div id="container">
         <div id="input-box">
-          <h1 className="text-2xl font-semibold text-gray-800" id="consultation-title">Get Consultation</h1>
+          <h1 className="text-2xl font-semibold text-gray-800" id="consultation-title" style={{ overflowX: 'hidden', overflowY: 'hidden' }}>Get Consultation</h1>
           <textarea
             className="textarea"
-            placeholder="Type your consultation notes here..."
+            placeholder="Enter your consultation notes here..."
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
@@ -44,10 +44,10 @@ export default function App() {
           </button>
         </div>
         <div id="output-box">
-          <h1>{loading ? "Processing..." : output ? "" : "Advice will appear here"}</h1>
+          <h1>{loading ? "Processing..." : output ? "" : "No Advice Yet"}</h1>
           <p style={{ lineHeight: '1.6' }}>{output}</p>
         </div>
       </div>
-    </div>
+    </div >
   );
 }

@@ -36,13 +36,13 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
     padding: 12px 20px;
     margin-bottom: 20px;
     border: 2px solid #4c9f70;
     border-radius: 25px;
     background-color: #f4f7fb;
-    font-size: 16px;
+    font-size: 20px;
     color: #333;
     transition: all 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -61,7 +61,7 @@
     color: white;
     border: none;
     border-radius: 25px;
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -159,6 +159,7 @@
 @media (max-width: 600px) {
     .search-bar {
         width: 90%;
+        font-size: 16px;
     }
 
     .results-list {
@@ -168,6 +169,7 @@
     .search-button {
         width: 90%;
         margin-top: 15px;
+        font-size: 16px;
     }
 }
 

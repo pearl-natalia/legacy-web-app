@@ -32,7 +32,7 @@ export default function Predict() {
         <div id="body-container">
             <div id="container">
                 <div id="input-box">
-                    <h1 className="text-2xl font-semibold text-gray-800" id="consultation-title">Predict Response</h1>
+                    <h1 className="text-2xl font-semibold text-gray-800" id="consultation-title" style={{ overflowX: 'hidden', overflowY: 'hidden' }}>Predict Anxiety Level</h1>
                     <textarea
                         className="textarea"
                         placeholder="Enter patient dialogue here..."
@@ -44,12 +44,12 @@ export default function Predict() {
                         onClick={handleSave}
                         disabled={loading || text.trim() === ""}  // Disable button if no input or loading
                     >
-                        {loading ? "Predicting..." : "Predict Response Type"}  {/* Change button text based on loading state */}
+                        {loading ? "Predicting..." : "Predict"}  {/* Change button text based on loading state */}
                     </button>
                 </div>
                 <div id="output-box">
                     <h1 style={{ textAlign: 'center' }}>
-                        {loading ? "Predicting..." : (output ? output : "Click the button to predict...")}
+                        {loading ? "Predicting..." : (output ? output : "No Prediction Yet")}
                     </h1>
                 </div>
             </div>
